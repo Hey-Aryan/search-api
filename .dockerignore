@@ -1,0 +1,8 @@
+*venv
+uploads
+.env
+tmp*
+*mp4
+*_test
+*_cache
+*temp
