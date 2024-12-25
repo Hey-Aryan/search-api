@@ -8,8 +8,8 @@ This document provides instructions to build and run the Search API v3.1 Docker 
 - NVIDIA drivers and the NVIDIA Container Toolkit for GPU support
 - AWS credentials configured locally under `~/.aws`
 - Required host directories:
-  - `/data/Aryan/pi-scout-search-api/temp`
-  - `/data/Aryan/pi-scout-search-api/uploads`
+  - `/temp`
+  - `/uploads`
 
 ## Build the Docker Image
 
@@ -31,9 +31,9 @@ docker run -d \
   -p 5110:5110 \
   --runtime=nvidia \
   --shm-size=20g \
-  -v /data/Aryan/pi-scout-search-api/temp:/app/temp \
-  -v /data/Aryan/pi-scout-search-api/uploads:/app/uploads \
-  -v /home/ubuntu/.aws:/root/.aws \
+  -v /search-api/temp:/app/temp \
+  -v /search-api/uploads:/app/uploads \
+  -v /home/user-name/.aws:/root/.aws \
   --restart always \
   search-api-v3.1 python run.py
 ```
