@@ -43,6 +43,39 @@ docker stop search-api-v3.1-container
 docker rm search-api-v3.1-container
 ```
 
+## API Usage with cURL
+1. Audio Search:
+Search for top matches for an audio file:
+
+```bash
+curl --location 'http://<host-ip>:8050/audio/search' \
+--form 'file=@"<path-to-your-audio-file>"' \
+--form 'top_k="<number-of-matches>"'
+```
+
+2. Video Search:
+Search for top matches for an image in a video:
+```bash
+curl --location 'http://<host-ip>:5110/video/search' \
+--form 'image=@"<path-to-your-image-file>"' \
+--form 'top_k="<number-of-matches>"'
+``` 
+
+3. Audio Ingest:
+Ingest an audio file for a specific speaker:
+```bash
+curl --location 'http://<host-ip>:8050/audio/ingest' \
+--form 'speaker="<speaker-name>"' \
+--form 'files=@"<path-to-your-audio-file>"'
+```
+
+4. Video Ingest:
+Ingest a video file:
+```bash
+curl --location 'http://<host-ip>:5110/video/ingest' \
+--form 'files=@"<path-to-your-video-file>"'
+```
+
 ## Troubleshooting
 - **Port conflict**: Check with `sudo netstat -tuln | grep 5110`.
 - **GPU issues**: Ensure NVIDIA drivers/toolkit are installed.
